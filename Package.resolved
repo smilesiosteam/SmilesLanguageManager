@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "smilesstorage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hananahmad/SmilesStorage.git",
+      "state" : {
+        "revision" : "178135f1caa1013d7304ff62d02e6febaf40d666",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}
