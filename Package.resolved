@@ -3,10 +3,10 @@
     {
       "identity" : "smilesstorage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hananahmad/SmilesStorage.git",
+      "location" : "https://github.com/smilesiosteam/SmilesStorage.git",
       "state" : {
-        "revision" : "178135f1caa1013d7304ff62d02e6febaf40d666",
-        "version" : "1.0.2"
+        "revision" : "89a57c302aab530f033ba35f001b09cfee822707",
+        "version" : "1.0.0"
       }
     }
   ],
