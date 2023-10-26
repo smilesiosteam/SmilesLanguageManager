@@ -50,7 +50,7 @@ public class SmilesLanguageManager {
     public private(set) var currentLanguage: Languages {
         get {
             guard let currentLang = storage.string(forKey: DefaultsKeysForLanguage.selectedLanguage.rawValue) else {
-                fatalError("Did you set the default language for the app?")
+                return .en
             }
             return Languages(rawValue: currentLang)!
         }
@@ -81,7 +81,7 @@ public class SmilesLanguageManager {
     public var defaultLanguage: Languages {
         get {
             guard let defaultLanguage = storage.string(forKey: DefaultsKeysForLanguage.defaultLanguage.rawValue) else {
-                fatalError("Did you set the default language for the app?")
+                return .en
             }
             return Languages(rawValue: defaultLanguage)!
         }
