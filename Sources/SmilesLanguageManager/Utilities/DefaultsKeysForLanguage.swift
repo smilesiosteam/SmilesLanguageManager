@@ -9,7 +9,5 @@
 import Foundation
 
 enum DefaultsKeysForLanguage: String {
-    case selectedLanguage = "CurrentAppLanguage"
-    case defaultLanguage = "LanguageManagerDefaultLanguage"
     case settingLang = "settingLang"
 }

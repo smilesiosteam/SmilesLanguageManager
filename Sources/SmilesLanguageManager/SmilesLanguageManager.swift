@@ -19,7 +19,7 @@ public class SmilesLanguageManager {
     
     // MARK: - Private properties
     
-    private var storage = SmilesStorage()
+    private var storage = SmilesStorageHandler(storageType: .userDefaults)
     private var englishResources = [String: Any]()
     private var arabicResources = [String: Any]()
     
@@ -49,13 +49,13 @@ public class SmilesLanguageManager {
     ///
     public private(set) var currentLanguage: Languages {
         get {
-            guard let currentLang = storage.string(forKey: DefaultsKeysForLanguage.selectedLanguage.rawValue) else {
+            guard let currentLang: String = storage.getValue(forKey: .selectedLanguage) else {
                 return .en
             }
             return Languages(rawValue: currentLang)!
         }
         set {
-            storage.set(newValue.rawValue, forKey: DefaultsKeysForLanguage.selectedLanguage.rawValue)
+            storage.setValue(newValue.rawValue, forKey: .selectedLanguage)
         }
     }
     
@@ -80,7 +80,7 @@ public class SmilesLanguageManager {
     ///
     public var defaultLanguage: Languages {
         get {
-            guard let defaultLanguage = storage.string(forKey: DefaultsKeysForLanguage.defaultLanguage.rawValue) else {
+            guard let defaultLanguage: String = storage.getValue(forKey: .defaultLanguage) else {
                 return .en
             }
             return Languages(rawValue: defaultLanguage)!
@@ -89,7 +89,7 @@ public class SmilesLanguageManager {
             // swizzle the awakeFromNib from nib and localize the text in the new awakeFromNib
             UIView.localize()
             
-            let defaultLanguage = storage.string(forKey: DefaultsKeysForLanguage.defaultLanguage.rawValue)
+            let defaultLanguage: String? = storage.getValue(forKey: .defaultLanguage)
             guard defaultLanguage == nil else {
                 // If the default language has been set before,
                 // that means that the user opened the app before and maybe
@@ -103,8 +103,8 @@ public class SmilesLanguageManager {
                 language = deviceLanguage ?? .en
             }
             
-            storage.set(language.rawValue, forKey: DefaultsKeysForLanguage.defaultLanguage.rawValue)
-            storage.set(language.rawValue, forKey: DefaultsKeysForLanguage.selectedLanguage.rawValue)
+            storage.setValue(language.rawValue, forKey: .defaultLanguage)
+            storage.setValue(language.rawValue, forKey: .selectedLanguage)
             setLanguage(language: language)
         }
     }
